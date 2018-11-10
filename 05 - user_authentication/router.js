@@ -40,7 +40,7 @@ router.get("/users", (req, res, next) => {
     });
 
 router.post("/signup", (req, res, next) => {
-    User.find({ email: req.body.email. })
+    User.find({ email: req.body.email })
         .exec()
         .then(user => {
             if (user.length >= 1) {

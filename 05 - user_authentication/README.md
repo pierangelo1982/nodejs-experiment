@@ -15,3 +15,8 @@ mongoose
 ```
 npm install mongoose
 ```
+
+body parser
+```
+npm install body-parser
+```

@@ -29,7 +29,7 @@ npm install body-parser
 create:
 ```
 {
-    "email":"pierangelo82@outlook.it",
-    "password":"alnitek84"
+    "email":"test@test.com",
+    "password":"password"
 }
 ```

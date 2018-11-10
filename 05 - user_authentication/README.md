@@ -25,3 +25,11 @@ npm install body-parser
 * /api/users (get)
 * /api/signup (post)
 * /api/delete/:userId (delete)
+
+create:
+```
+{
+    "email":"pierangelo82@outlook.it",
+    "password":"alnitek84"
+}
+```

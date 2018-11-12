@@ -24,6 +24,7 @@ npm install body-parser
 ### api url:
 * /api/users (get)
 * /api/signup (post)
+* /api/update/:userId (patch)
 * /api/delete/:userId (delete)
 
 create:

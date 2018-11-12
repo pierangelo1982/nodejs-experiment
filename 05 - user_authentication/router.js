@@ -9,6 +9,8 @@ const mongoose = require("mongoose");
 // bcrypt
 const bcrypt = require("bcryptjs");
 
+
+
 // User model
 const User = require("./models/user");
 
@@ -79,6 +81,38 @@ router.post("/signup", (req, res, next) => {
             }
         });
 });
+
+
+// update
+router.patch("/update/:userId", (req, res, next) => {
+    //const id = req.params.userId;
+    console.log("1111111111111:", req.params.userId);
+    /* 
+    // metodo per quando nel req.body c'è un subarray
+    const updateOps = {};
+    for (const ops of req.body) {
+        console.log("-----------", ops.value);
+        updateOps[ops.propName] = ops.value;
+    }*/
+    User.update({_id: req.params.userId}, {
+        $set: req.body
+    }).then(result => {
+        res.status(200).json({
+            message: "Utente Aggiornato",
+            request: {
+                type: 'GET',
+                //url: 'http://localhost:3000/users/' + id
+                url: 'http://localhost:3000/users/'
+            }
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+});
+
 
 
 // delete

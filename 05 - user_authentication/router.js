@@ -41,6 +41,31 @@ router.get("/users", (req, res, next) => {
           })
     });
 
+// detail
+router.get("/user/:userId", (req, res, next) => {
+    const id = req.params.userId;
+    User.findById(id)
+        .select()
+        .exec()
+        .then(doc => {
+            console.log("Form database", doc);
+            if (doc) {
+                res.status(200).json({
+                    user: doc
+                });
+            } else {
+                res.status(404).json({
+                    message: "id utente non esistente!"
+                });
+            }
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+});
+
 
 // create
 router.post("/signup", (req, res, next) => {

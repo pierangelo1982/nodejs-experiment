@@ -10,6 +10,9 @@ const port = process.env.PORT;
 
 const sequelize = require('./database')
 
+const { PrismaClient } = require("@prisma/client")
+const prisma = new PrismaClient()
+
 app.get('/test', async function(req, res, next) {
     try {
         await sequelize.authenticate();
@@ -25,6 +28,28 @@ app.get('/test', async function(req, res, next) {
     }
 })
 
+app.get('/create', async function(req, res, next) {
+    await prisma.users.create({
+        data: {
+            firstName: "Napoleone",
+            lastName: "test@test.com",
+        }
+    }).then(response => {
+        console.log(response);
+    })
+    .catch(error => {
+        console.log(error)
+    })
+})
+
+
+app.get('/', async function(req, res, next) {
+    const allUsers = await prisma.users.findMany()
+    console.log(allUsers)
+    res.status(200).json({
+        users: allUsers
+    })
+})
 
 app.listen(port, () => {
     console.log(`Listening on ${hostname}:${port}`)

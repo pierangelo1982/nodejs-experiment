@@ -4,6 +4,7 @@ const prisma = new PrismaClient()
 
 
 async function main() {
+  /*
     await prisma.user.create({
       data: {
         name: "Alice",
@@ -16,6 +17,7 @@ async function main() {
         }
       }
     })
+  */
     const allUsers = await prisma.user.findMany({
       include: { 
         posts: true,
@@ -23,6 +25,36 @@ async function main() {
       },
     })
     console.dir(allUsers, { depth: null })
+    
+    await prisma.company.create({
+      data: {
+        name: "ciao xxxx",
+        email: "company@test.com",
+        vat: "000000000002",
+        workers: {
+          create: [
+            {
+              firstName: "Napoleone Bonaparte",
+              lastName: "Bonaparte",
+              email: "napo@test.com"
+            },
+            {
+              firstName: "Giuseppe",
+              lastName: "Garibaldi",
+              email: "argo@test.it"
+            }
+          ]
+        }
+        
+      }
+    })
+
+    const allCompany = await prisma.company.findMany({
+      include: {
+        workers: true
+      }
+    })
+    console.dir(allCompany, { depth: null })
   }
 
 

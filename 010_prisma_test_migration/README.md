@@ -7,3 +7,7 @@ https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch-sql-n
 
 
 
+ npx prisma migrate save --experimental
+
+ npx prisma migrate up --experimental
+

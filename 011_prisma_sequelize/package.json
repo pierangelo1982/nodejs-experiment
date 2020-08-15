@@ -1,0 +1,22 @@
+{
+  "name": "011_prisma_sequelize",
+  "version": "1.0.0",
+  "description": "Create an EMPTY project: `> npx sequelize-cli init`",
+  "main": "app.js",
+  "dependencies": {
+    "@prisma/client": "^2.4.1",
+    "express": "^4.17.1",
+    "pg": "^8.3.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.4"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.4.1",
+    "sequelize-cli": "^6.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
